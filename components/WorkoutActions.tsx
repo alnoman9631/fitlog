@@ -1,0 +1,62 @@
+"use client";
+
+import { Check, Heart, Plus } from "lucide-react";
+import { useFitLog } from "@/context/FitLogContext";
+import type { Workout } from "@/types/workout";
+
+interface WorkoutActionsProps {
+  workout: Workout;
+}
+
+export default function WorkoutActions({
+  workout,
+}: WorkoutActionsProps) {
+  const {
+    addToPlan,
+    saveWorkout,
+    isInPlan,
+    isSaved,
+  } = useFitLog();
+
+  const alreadyInPlan = isInPlan(workout.id);
+  const alreadySaved = isSaved(workout.id);
+
+  return (
+    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+      <button
+        type="button"
+        onClick={() => addToPlan(workout)}
+        disabled={alreadyInPlan}
+        className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-black transition ${
+          alreadyInPlan
+            ? "cursor-not-allowed bg-[#333333] text-[#777777]"
+            : "bg-[#ccff00] text-black hover:bg-[#d9ff4d]"
+        }`}
+      >
+        {alreadyInPlan ? <Check size={18} /> : <Plus size={18} />}
+
+        {alreadyInPlan
+          ? "ADDED TO TODAY'S PLAN"
+          : "ADD TO TODAY'S PLAN"}
+      </button>
+
+      <button
+        type="button"
+        onClick={() => saveWorkout(workout)}
+        disabled={alreadySaved}
+        className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-black transition ${
+          alreadySaved
+            ? "cursor-not-allowed border-[#333333] text-[#777777]"
+            : "border-[#ccff00] text-[#ccff00] hover:bg-[#ccff00] hover:text-black"
+        }`}
+      >
+        <Heart
+          size={18}
+          className={alreadySaved ? "fill-current" : ""}
+        />
+
+        {alreadySaved ? "SAVED" : "SAVE FOR LATER"}
+      </button>
+    </div>
+  );
+}

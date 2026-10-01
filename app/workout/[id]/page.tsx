@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { getWorkoutById } from "@/lib/api";
 import Navbar from "@/components/Navbar";
+import WorkoutActions from "@/components/WorkoutActions";
 
 interface WorkoutDetailsPageProps {
   params: Promise<{
@@ -80,44 +81,56 @@ export default async function WorkoutDetailsPage({
 
               {/* Quick stats */}
               <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {/* Duration */}
                 <div className="rounded-xl border border-white/10 bg-[#181818] p-4">
                   <Clock3 size={18} className="text-[#ccff00]" />
+
                   <p className="mt-3 text-[10px] font-bold uppercase text-[#666666]">
                     Duration
                   </p>
+
                   <p className="mt-1 font-black text-white">
                     {workout.duration} min
                   </p>
                 </div>
 
+                {/* Calories */}
                 <div className="rounded-xl border border-white/10 bg-[#181818] p-4">
                   <Flame size={18} className="text-[#ccff00]" />
+
                   <p className="mt-3 text-[10px] font-bold uppercase text-[#666666]">
                     Calories
                   </p>
+
                   <p className="mt-1 font-black text-white">
                     {workout.caloriesBurned}
                   </p>
                 </div>
 
+                {/* Sets */}
                 <div className="rounded-xl border border-white/10 bg-[#181818] p-4">
                   <Repeat size={18} className="text-[#ccff00]" />
+
                   <p className="mt-3 text-[10px] font-bold uppercase text-[#666666]">
                     Sets
                   </p>
+
                   <p className="mt-1 font-black text-white">
                     {workout.sets}
                   </p>
                 </div>
 
+                {/* Rating */}
                 <div className="rounded-xl border border-white/10 bg-[#181818] p-4">
                   <Star
                     size={18}
                     className="fill-[#ccff00] text-[#ccff00]"
                   />
+
                   <p className="mt-3 text-[10px] font-bold uppercase text-[#666666]">
                     Rating
                   </p>
+
                   <p className="mt-1 font-black text-white">
                     {workout.rating}
                   </p>
@@ -126,30 +139,39 @@ export default async function WorkoutDetailsPage({
 
               {/* Specifications */}
               <div className="mt-8 grid gap-4 border-y border-white/10 py-6 sm:grid-cols-2">
+                {/* Equipment */}
                 <div className="flex items-center gap-3">
                   <Dumbbell size={18} className="text-[#ccff00]" />
+
                   <div>
                     <p className="text-[10px] font-bold uppercase text-[#666666]">
                       Equipment
                     </p>
+
                     <p className="text-sm font-bold text-white">
                       {workout.equipment}
                     </p>
                   </div>
                 </div>
 
+                {/* Reps */}
                 <div className="flex items-center gap-3">
                   <Target size={18} className="text-[#ccff00]" />
+
                   <div>
                     <p className="text-[10px] font-bold uppercase text-[#666666]">
                       Reps
                     </p>
+
                     <p className="text-sm font-bold text-white">
                       {workout.reps}
                     </p>
                   </div>
                 </div>
               </div>
+
+              {/* Plan and Save actions */}
+              <WorkoutActions workout={workout} />
             </div>
           </div>
 
