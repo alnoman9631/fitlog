@@ -1,3 +1,4 @@
+import WorkoutGrid from "@/components/WorkoutGrid";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 
@@ -26,10 +27,8 @@ export default function Home() {
               Twelve lifts covering every major muscle group.
             </p>
 
-            <div className="mt-10 flex min-h-[250px] items-center justify-center rounded-2xl border border-dashed border-white/10">
-              <p className="text-sm text-[#666666]">
-                Workout cards will appear here.
-              </p>
+            <div className="mt-10">
+              <WorkoutGrid />
             </div>
           </div>
         </section>
