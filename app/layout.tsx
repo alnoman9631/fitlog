@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { FitLogProvider } from "@/context/FitLogContext";
 
 export const metadata: Metadata = {
   title: "FitLog — Workout Library",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <FitLogProvider>{children}</FitLogProvider>
+      </body>
     </html>
   );
 }
