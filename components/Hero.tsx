@@ -5,8 +5,6 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-white/10">
       <div className="mx-auto grid min-h-[calc(100vh-80px)] max-w-7xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:px-10 lg:py-20">
-        
-        {/* Left Content */}
         <div className="max-w-2xl">
           <p className="mb-5 text-xs font-black tracking-[0.25em] text-[#ccff00] sm:text-sm">
             WORKOUT LIBRARY
@@ -25,14 +23,17 @@ export default function Hero() {
 
           <Link
             href="#library"
-            className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#ccff00] px-6 py-3.5 text-sm font-black text-black transition hover:scale-105 hover:bg-[#d9ff4d]"
+            className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#ccff00] px-6 py-3.5 text-sm font-black !text-black transition hover:scale-105 hover:bg-[#d9ff4d]"
+            style={{
+              color: "#000000",
+              backgroundColor: "#ccff00",
+            }}
           >
             BROWSE WORKOUTS
             <ArrowDownRight size={18} />
           </Link>
         </div>
 
-        {/* Right Image */}
         <div className="relative mx-auto w-full max-w-xl lg:ml-auto">
           <div className="absolute -inset-4 rounded-3xl bg-[#ccff00]/10 blur-3xl" />
 
@@ -50,6 +51,7 @@ export default function Hero() {
                 <p className="text-xs font-bold uppercase tracking-widest text-[#ccff00]">
                   TRAIN HARD
                 </p>
+
                 <p className="mt-1 text-xl font-black text-white">
                   STAY CONSISTENT
                 </p>

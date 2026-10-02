@@ -36,3 +36,34 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+/* =========================================================
+   FITLOG BUTTON TEXT FIX
+   Force black text on all lime buttons
+   ========================================================= */
+
+.bg-\[\#ccff00\] {
+  color: #000000 !important;
+}
+
+.bg-\[\#ccff00\]\/60 {
+  color: #000000 !important;
+}
+
+/* Keep lime buttons black on hover */
+.hover\:bg-\[\#d9ff4d\]:hover {
+  color: #000000 !important;
+}
+
+/* Extra protection for links and buttons */
+a.bg-\[\#ccff00\],
+button.bg-\[\#ccff00\],
+a.bg-\[\#ccff00\]\/60,
+button.bg-\[\#ccff00\]\/60 {
+  color: #000000 !important;
+}
+
+/* Disabled buttons remain readable */
+button:disabled {
+  cursor: not-allowed;
+}

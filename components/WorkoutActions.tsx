@@ -44,11 +44,13 @@ export default function WorkoutActions({
         type="button"
         onClick={handleAddToPlan}
         disabled={alreadyInPlan}
-        className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-black transition ${
-          alreadyInPlan
-            ? "cursor-not-allowed bg-[#333333] text-[#777777]"
-            : "bg-[#ccff00] text-black hover:bg-[#d9ff4d]"
-        }`}
+        className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-black !text-black transition ${alreadyInPlan
+          ? "cursor-not-allowed bg-[#444444]"
+          : "bg-[#ccff00] hover:bg-[#d9ff4d]"
+          }`}
+        style={{
+          color: alreadyInPlan ? "#888888" : "#000000",
+        }}
       >
         {alreadyInPlan ? <Check size={18} /> : <Plus size={18} />}
 
@@ -61,11 +63,13 @@ export default function WorkoutActions({
         type="button"
         onClick={handleSave}
         disabled={alreadySaved}
-        className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-black transition ${
-          alreadySaved
-            ? "cursor-not-allowed border-[#333333] text-[#777777]"
-            : "border-[#ccff00] text-[#ccff00] hover:bg-[#ccff00] hover:text-black"
-        }`}
+        className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-black !text-black transition ${alreadySaved
+            ? "cursor-not-allowed bg-[#444444]"
+            : "bg-[#ccff00] hover:bg-[#d9ff4d]"
+          }`}
+        style={{
+          color: alreadySaved ? "#888888" : "#000000",
+        }}
       >
         <Heart
           size={18}

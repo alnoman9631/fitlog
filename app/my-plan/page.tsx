@@ -11,8 +11,8 @@ import {
 import { useState } from "react";
 import toast from "react-hot-toast";
 import Navbar from "@/components/Navbar";
-import { useFitLog } from "@/context/FitLogContext";
 import Footer from "@/components/Footer";
+import { useFitLog } from "@/context/FitLogContext";
 
 type Tab = "plan" | "saved";
 
@@ -60,7 +60,7 @@ export default function MyPlanPage() {
   function handleRemove(id: number) {
     if (activeTab === "plan") {
       removeFromPlan(id);
-      toast.success("Workout removed from today&apos;s plan");
+      toast.success("Workout removed from today's plan");
     } else {
       removeSaved(id);
       toast.success("Workout removed from saved");
@@ -77,7 +77,6 @@ export default function MyPlanPage() {
 
       <main className="min-h-screen bg-[#111111] px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          {/* Header */}
           <p className="text-xs font-black tracking-[0.25em] text-[#ccff00]">
             YOUR TRAINING
           </p>
@@ -136,9 +135,12 @@ export default function MyPlanPage() {
               type="button"
               onClick={() => setActiveTab("plan")}
               className={`rounded-full px-5 py-2 text-xs font-black transition ${activeTab === "plan"
-                ? "bg-[#ccff00] text-black"
-                : "border border-white/15 text-white hover:border-[#ccff00] hover:text-[#ccff00]"
+                ? "bg-[#ccff00]"
+                : "bg-[#ccff00]/60 text-black hover:bg-[#ccff00]"
                 }`}
+              style={{
+                color: "#000000",
+              }}
             >
               TODAY&apos;S PLAN
             </button>
@@ -146,16 +148,19 @@ export default function MyPlanPage() {
             <button
               type="button"
               onClick={() => setActiveTab("saved")}
-              className={`rounded-full px-5 py-2 text-xs font-black transition ${activeTab === "saved"
-                ? "bg-[#ccff00] text-black"
-                : "border border-white/15 text-white hover:border-[#ccff00] hover:text-[#ccff00]"
+              className={`rounded-full px-5 py-2 text-xs font-black !text-black transition ${activeTab === "saved"
+                ? "bg-[#ccff00]"
+                : "bg-[#ccff00]/60 hover:bg-[#ccff00]"
                 }`}
+              style={{
+                color: "#000000",
+              }}
             >
               SAVED
             </button>
           </div>
 
-          {/* Content */}
+          {/* Workout List */}
           <section className="mt-8">
             {activeWorkouts.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-white/10 px-6 py-20 text-center">
@@ -189,7 +194,6 @@ export default function MyPlanPage() {
                         : "border-white/10 hover:border-[#ccff00]/40"
                         }`}
                     >
-                      {/* Image */}
                       <Link href={`/workout/${workout.id}`}>
                         <img
                           src={workout.image}
@@ -221,11 +225,15 @@ export default function MyPlanPage() {
                           <span>{workout.rating} ★</span>
                         </div>
 
-                        {/* Actions */}
+                        {/* Card Actions */}
                         <div className="mt-5 flex gap-2">
                           <Link
                             href={`/workout/${workout.id}`}
-                            className="flex-1 rounded-full border border-white/15 px-3 py-2.5 text-center text-[10px] font-black text-white transition hover:border-[#ccff00] hover:text-[#ccff00]"
+                            className="flex-1 rounded-full bg-[#ccff00] px-3 py-2.5 text-center text-[10px] font-black !text-black transition hover:bg-[#d9ff4d]"
+                            style={{
+                              color: "#000000",
+                              backgroundColor: "#ccff00",
+                            }}
                           >
                             VIEW DETAILS
                           </Link>
@@ -236,10 +244,7 @@ export default function MyPlanPage() {
                               onClick={() =>
                                 handleMarkAsDone(workout.id)
                               }
-                              className={`rounded-full px-3 py-2.5 text-[10px] font-black transition ${isCompleted
-                                ? "bg-[#ccff00] text-black"
-                                : "border border-[#ccff00] text-[#ccff00] hover:bg-[#ccff00] hover:text-black"
-                                }`}
+                              className="rounded-full bg-[#ccff00] px-3 py-2.5 text-black transition hover:bg-[#d9ff4d]"
                               title={
                                 isCompleted
                                   ? "Mark as not done"
@@ -255,7 +260,7 @@ export default function MyPlanPage() {
                             onClick={() =>
                               handleRemove(workout.id)
                             }
-                            className="rounded-full border border-red-500/30 px-3 py-2.5 text-red-400 transition hover:bg-red-500 hover:text-white"
+                            className="rounded-full bg-[#ff4d4d] px-3 py-2.5 text-black transition hover:bg-[#ff6666]"
                             title="Remove"
                           >
                             <X size={14} />
@@ -270,6 +275,7 @@ export default function MyPlanPage() {
           </section>
         </div>
       </main>
+
       <Footer />
     </>
   );

@@ -54,18 +54,26 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop Counters */}
+        {/* Desktop Buttons */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/my-plan"
-            className="rounded-full bg-[#ccff00] px-4 py-2 text-xs font-black text-black transition hover:bg-[#d9ff4d]"
+            className="bg-[#ccff00] px-5 py-2.5 text-xs font-black !text-black rounded-full transition hover:bg-[#d9ff4d]"
+            style={{
+              color: "#000000",
+              backgroundColor: "#ccff00",
+            }}
           >
             PLAN {plan.length}
           </Link>
 
           <Link
             href="/my-plan"
-            className="rounded-full border border-[#ccff00] px-4 py-2 text-xs font-black text-[#ccff00] transition hover:bg-[#ccff00] hover:text-black"
+            className="bg-[#ccff00] px-5 py-2.5 text-xs font-black !text-black rounded-full transition hover:bg-[#d9ff4d]"
+            style={{
+              color: "#000000",
+              backgroundColor: "#ccff00",
+            }}
           >
             SAVED {saved.length}
           </Link>
@@ -75,14 +83,22 @@ export default function Navbar() {
         <div className="flex items-center gap-2 md:hidden">
           <Link
             href="/my-plan"
-            className="rounded-full bg-[#ccff00] px-3 py-2 text-[10px] font-black text-black"
+            className="rounded-full bg-[#ccff00] px-3 py-2 text-[10px] font-black !text-black"
+            style={{
+              color: "#000000",
+              backgroundColor: "#ccff00",
+            }}
           >
             PLAN {plan.length}
           </Link>
 
           <Link
             href="/my-plan"
-            className="rounded-full border border-[#ccff00] px-3 py-2 text-[10px] font-black text-[#ccff00]"
+            className="rounded-full bg-[#ccff00] px-3 py-2 text-[10px] font-black !text-black"
+            style={{
+              color: "#000000",
+              backgroundColor: "#ccff00",
+            }}
           >
             SAVED {saved.length}
           </Link>

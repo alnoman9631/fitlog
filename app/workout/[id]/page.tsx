@@ -35,9 +35,9 @@ export default async function WorkoutDetailsPage({
           {/* Back button */}
           <Link
             href="/#library"
-            className="mb-8 inline-flex items-center gap-2 text-sm font-bold text-[#888888] transition hover:text-[#ccff00]"
+            className="mb-8 inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-5 py-2.5 text-xs font-black text-black transition hover:bg-[#d9ff4d]"
           >
-            <ArrowLeft size={18} />
+            <ArrowLeft size={16} />
             BACK TO LIBRARY
           </Link>
 

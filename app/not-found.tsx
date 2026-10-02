@@ -22,13 +22,17 @@ export default function NotFound() {
                 </h2>
 
                 <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-[#777777]">
-                    The page you&apos;re looking for doesn&apos;t exist or may have been moved.
-                    Let&apos;s get you back to the workout library.
+                    The page you&apos;re looking for doesn&apos;t exist or may have been
+                    moved. Let&apos;s get you back to the workout library.
                 </p>
 
                 <Link
                     href="/"
-                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-6 py-3.5 text-xs font-black text-black transition hover:bg-[#d9ff4d]"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#ccff00] px-6 py-3.5 text-xs font-black !text-black transition hover:bg-[#d9ff4d]"
+                    style={{
+                        color: "#000000",
+                        backgroundColor: "#ccff00",
+                    }}
                 >
                     <ArrowLeft size={16} />
                     BACK TO WORKOUTS
