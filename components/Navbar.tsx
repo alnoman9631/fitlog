@@ -2,13 +2,21 @@
 
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useFitLog } from "@/context/FitLogContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const pathname = usePathname();
+
   const { plan, saved } = useFitLog();
+
+  const isWorkoutPage =
+    pathname === "/" || pathname.startsWith("/workout/");
+
+  const isMyPlanPage = pathname.startsWith("/my-plan");
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111111]/95 backdrop-blur-md">
@@ -25,14 +33,22 @@ export default function Navbar() {
         <div className="hidden items-center gap-8 md:flex">
           <Link
             href="/"
-            className="text-sm font-semibold text-white transition hover:text-[#ccff00]"
+            className={`text-sm font-semibold transition ${
+              isWorkoutPage
+                ? "text-[#ccff00]"
+                : "text-white hover:text-[#ccff00]"
+            }`}
           >
             Workout
           </Link>
 
           <Link
             href="/my-plan"
-            className="text-sm font-semibold text-white transition hover:text-[#ccff00]"
+            className={`text-sm font-semibold transition ${
+              isMyPlanPage
+                ? "text-[#ccff00]"
+                : "text-white hover:text-[#ccff00]"
+            }`}
           >
             My Plan
           </Link>
@@ -55,7 +71,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile */}
         <div className="flex items-center gap-2 md:hidden">
           <Link
             href="/my-plan"
@@ -89,7 +105,11 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-white transition hover:text-[#ccff00]"
+              className={`text-sm font-semibold transition ${
+                isWorkoutPage
+                  ? "text-[#ccff00]"
+                  : "text-white hover:text-[#ccff00]"
+              }`}
             >
               Workout
             </Link>
@@ -97,7 +117,11 @@ export default function Navbar() {
             <Link
               href="/my-plan"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-white transition hover:text-[#ccff00]"
+              className={`text-sm font-semibold transition ${
+                isMyPlanPage
+                  ? "text-[#ccff00]"
+                  : "text-white hover:text-[#ccff00]"
+              }`}
             >
               My Plan
             </Link>

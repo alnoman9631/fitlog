@@ -1,6 +1,7 @@
-import WorkoutGrid from "@/components/WorkoutGrid";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import WorkoutGrid from "@/components/WorkoutGrid";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <Footer />
     </>
   );
 }

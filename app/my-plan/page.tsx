@@ -12,6 +12,7 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import { useFitLog } from "@/context/FitLogContext";
+import Footer from "@/components/Footer";
 
 type Tab = "plan" | "saved";
 
@@ -269,6 +270,7 @@ export default function MyPlanPage() {
           </section>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
