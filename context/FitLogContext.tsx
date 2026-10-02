@@ -12,10 +12,13 @@ import type { Workout } from "@/types/workout";
 interface FitLogContextType {
   plan: Workout[];
   saved: Workout[];
+
   addToPlan: (workout: Workout) => void;
   removeFromPlan: (id: number) => void;
+
   saveWorkout: (workout: Workout) => void;
   removeSaved: (id: number) => void;
+
   isInPlan: (id: number) => boolean;
   isSaved: (id: number) => boolean;
 }
@@ -33,7 +36,6 @@ export function FitLogProvider({
   const [saved, setSaved] = useState<Workout[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load saved data from localStorage
   useEffect(() => {
     try {
       const storedPlan = localStorage.getItem("fitlog-plan");
@@ -53,14 +55,12 @@ export function FitLogProvider({
     }
   }, []);
 
-  // Save plan to localStorage
   useEffect(() => {
     if (!isLoaded) return;
 
     localStorage.setItem("fitlog-plan", JSON.stringify(plan));
   }, [plan, isLoaded]);
 
-  // Save saved workouts to localStorage
   useEffect(() => {
     if (!isLoaded) return;
 

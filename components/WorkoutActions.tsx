@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, Heart, Plus } from "lucide-react";
+import toast from "react-hot-toast";
 import { useFitLog } from "@/context/FitLogContext";
 import type { Workout } from "@/types/workout";
 
@@ -21,11 +22,27 @@ export default function WorkoutActions({
   const alreadyInPlan = isInPlan(workout.id);
   const alreadySaved = isSaved(workout.id);
 
+  function handleAddToPlan() {
+    if (alreadyInPlan) return;
+
+    addToPlan(workout);
+
+    toast.success("Workout added to today's plan");
+  }
+
+  function handleSave() {
+    if (alreadySaved) return;
+
+    saveWorkout(workout);
+
+    toast.success("Workout saved for later");
+  }
+
   return (
     <div className="mt-8 flex flex-col gap-3 sm:flex-row">
       <button
         type="button"
-        onClick={() => addToPlan(workout)}
+        onClick={handleAddToPlan}
         disabled={alreadyInPlan}
         className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-black transition ${
           alreadyInPlan
@@ -42,7 +59,7 @@ export default function WorkoutActions({
 
       <button
         type="button"
-        onClick={() => saveWorkout(workout)}
+        onClick={handleSave}
         disabled={alreadySaved}
         className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-sm font-black transition ${
           alreadySaved

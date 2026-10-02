@@ -3,14 +3,16 @@
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { useFitLog } from "@/context/FitLogContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const { plan, saved } = useFitLog();
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#111111]/95 backdrop-blur-md">
       <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8 lg:px-10">
-        
         {/* Logo */}
         <Link
           href="/"
@@ -36,30 +38,37 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop Right Side */}
+        {/* Desktop Counters */}
         <div className="hidden items-center gap-3 md:flex">
           <Link
             href="/my-plan"
             className="rounded-full bg-[#ccff00] px-4 py-2 text-xs font-black text-black transition hover:bg-[#d9ff4d]"
           >
-            PLAN 0
+            PLAN {plan.length}
           </Link>
 
           <Link
             href="/my-plan"
             className="rounded-full border border-[#ccff00] px-4 py-2 text-xs font-black text-[#ccff00] transition hover:bg-[#ccff00] hover:text-black"
           >
-            SAVED 0
+            SAVED {saved.length}
           </Link>
         </div>
 
-        {/* Mobile Right Side */}
+        {/* Mobile Navigation */}
         <div className="flex items-center gap-2 md:hidden">
           <Link
             href="/my-plan"
             className="rounded-full bg-[#ccff00] px-3 py-2 text-[10px] font-black text-black"
           >
-            PLAN 0
+            PLAN {plan.length}
+          </Link>
+
+          <Link
+            href="/my-plan"
+            className="rounded-full border border-[#ccff00] px-3 py-2 text-[10px] font-black text-[#ccff00]"
+          >
+            SAVED {saved.length}
           </Link>
 
           <button
@@ -80,7 +89,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-white hover:text-[#ccff00]"
+              className="text-sm font-semibold text-white transition hover:text-[#ccff00]"
             >
               Workout
             </Link>
@@ -88,17 +97,9 @@ export default function Navbar() {
             <Link
               href="/my-plan"
               onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-white hover:text-[#ccff00]"
+              className="text-sm font-semibold text-white transition hover:text-[#ccff00]"
             >
               My Plan
-            </Link>
-
-            <Link
-              href="/my-plan"
-              onClick={() => setIsMenuOpen(false)}
-              className="text-sm font-semibold text-[#ccff00]"
-            >
-              Saved Workouts
             </Link>
           </div>
         </div>
