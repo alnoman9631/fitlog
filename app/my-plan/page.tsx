@@ -60,7 +60,7 @@ export default function MyPlanPage() {
   function handleRemove(id: number) {
     if (activeTab === "plan") {
       removeFromPlan(id);
-      toast.success("Workout removed from today's plan");
+      toast.success("Workout removed from today&apos;s plan");
     } else {
       removeSaved(id);
       toast.success("Workout removed from saved");
@@ -140,7 +140,7 @@ export default function MyPlanPage() {
                 : "border border-white/15 text-white hover:border-[#ccff00] hover:text-[#ccff00]"
                 }`}
             >
-              TODAY'S PLAN
+              TODAY&apos;S PLAN
             </button>
 
             <button

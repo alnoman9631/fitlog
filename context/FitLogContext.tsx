@@ -37,22 +37,36 @@ export function FitLogProvider({
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    try {
-      const storedPlan = localStorage.getItem("fitlog-plan");
-      const storedSaved = localStorage.getItem("fitlog-saved");
+    const storedPlan = localStorage.getItem("fitlog-plan");
+    const storedSaved = localStorage.getItem("fitlog-saved");
 
-      if (storedPlan) {
-        setPlan(JSON.parse(storedPlan));
-      }
+    if (storedPlan) {
+      try {
+        const parsedPlan: Workout[] = JSON.parse(storedPlan);
 
-      if (storedSaved) {
-        setSaved(JSON.parse(storedSaved));
+        setTimeout(() => {
+          setPlan(parsedPlan);
+        }, 0);
+      } catch {
+        localStorage.removeItem("fitlog-plan");
       }
-    } catch (error) {
-      console.error("Failed to load FitLog data:", error);
-    } finally {
-      setIsLoaded(true);
     }
+
+    if (storedSaved) {
+      try {
+        const parsedSaved: Workout[] = JSON.parse(storedSaved);
+
+        setTimeout(() => {
+          setSaved(parsedSaved);
+        }, 0);
+      } catch {
+        localStorage.removeItem("fitlog-saved");
+      }
+    }
+
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 0);
   }, []);
 
   useEffect(() => {
