@@ -11,6 +11,7 @@ import {
 import { getWorkoutById } from "@/lib/api";
 import Navbar from "@/components/Navbar";
 import WorkoutActions from "@/components/WorkoutActions";
+import Footer from "@/components/Footer";
 
 interface WorkoutDetailsPageProps {
   params: Promise<{
@@ -204,6 +205,7 @@ export default async function WorkoutDetailsPage({
           </section>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
